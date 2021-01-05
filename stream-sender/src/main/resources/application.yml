@@ -1,0 +1,11 @@
+
+spring:
+  cloud:
+    streams:
+      kafka:
+        binder:
+          brokers: 127.0.0.1:9092
+          zk-nodes: 127.0.0.1:2181
+      bindings:
+        output-channel:
+          destination: order-topic
