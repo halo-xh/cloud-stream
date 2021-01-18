@@ -4,7 +4,6 @@ import com.xh.config.OrderStreamsIN;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 import com.xh.pojo.Order;
 
@@ -19,7 +18,7 @@ public class OrderListener {
 
     @StreamListener(OrderStreamsIN.INPUT)
     public void handleOrderMsg(@Payload Order order) {
-        log.info("get order: {}", order.toString());
+        log.info("handleOrderMsg get order: {}", order.toString());
     }
 
 //    @StreamListener(OrderStreamsIN.INPUT)
@@ -27,5 +26,11 @@ public class OrderListener {
 //        Order order = orderGenericMessage.getPayload();
 //        log.info("get order: {}", order.toString());
 //    }
+
+    @StreamListener(value = OrderStreamsIN.INPUT,condition = "headers['name'] == 'test1'")
+    public void handleNamedOrderMsg(@Payload Order order) {
+        log.info("handleNamedOrderMsg get order: {}", order.toString());
+    }
+
 
 }

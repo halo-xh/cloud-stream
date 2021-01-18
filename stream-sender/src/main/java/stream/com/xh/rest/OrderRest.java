@@ -29,7 +29,13 @@ public class OrderRest {
                 .price(BigDecimal.valueOf(123))
                 .uuid(id)
                 .build();
+        Order order1 = Order.builder().date(new Date())
+                .name("id-" + id)
+                .price(BigDecimal.valueOf(123123))
+                .uuid(id)
+                .build();
         orderSenderService.sendOrder(order);
+        orderSenderService.sendOrder(order1);
         return order.toString();
     }
 

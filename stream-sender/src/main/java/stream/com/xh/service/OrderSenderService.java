@@ -3,6 +3,8 @@ package stream.com.xh.service;
 import com.xh.config.OrderStreamsIN;
 import com.xh.config.OrderStreamsOUT;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import com.xh.pojo.Order;
@@ -17,11 +19,11 @@ import com.xh.pojo.Order;
 @Slf4j
 public class OrderSenderService {
 
-    private OrderStreamsOUT out;
+    @Autowired
+    private ApplicationEventPublisher applicationEventPublisher;
 
-    public OrderSenderService(OrderStreamsOUT out) {
-        this.out = out;
-    }
+    @Autowired
+    private OrderStreamsOUT out;
 
     public void sendOrder(Order order) {
         boolean send = out.output().send(MessageBuilder
@@ -30,6 +32,10 @@ public class OrderSenderService {
         if (send) {
             log.info("send order:{}", order);
         }
+    }
+
+    public void publishEvent(Order order){
+        applicationEventPublisher.publishEvent(order);
     }
 
 
