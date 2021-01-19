@@ -35,7 +35,7 @@ public class OrderRest {
                 .uuid(id)
                 .build();
         orderSenderService.sendOrder(order);
-        orderSenderService.sendOrder(order1);
+        orderSenderService.publishEvent(order1);
         return order.toString();
     }
 

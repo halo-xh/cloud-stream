@@ -35,6 +35,7 @@ public class OrderSenderService {
     }
 
     public void publishEvent(Order order){
+        System.out.println("publishEvent Thread.currentThread().getId() = " + Thread.currentThread().getId());
         applicationEventPublisher.publishEvent(order);
     }
 

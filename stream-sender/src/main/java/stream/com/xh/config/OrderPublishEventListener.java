@@ -30,6 +30,7 @@ public class OrderPublishEventListener {
         log.info("Kafka stream send user change event, request:{}", eventRequest.getPayload());
         Map<String, Object> headers = new HashMap<>();
         headers.put("order-event", eventRequest.getPayload().getName());
+        System.out.println("publishUserChangeEvent  Thread.currentThread().getId() = " + Thread.currentThread().getId());
         boolean result = out.output().send(new GenericMessage<>(eventRequest.getPayload(), headers));
         log.info("Kafka stream send user change event result:{}", result);
     }
