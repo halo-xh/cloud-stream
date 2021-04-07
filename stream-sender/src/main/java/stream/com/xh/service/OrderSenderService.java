@@ -28,7 +28,7 @@ public class OrderSenderService {
     public void sendOrder(Order order) {
         boolean send = out.output().send(MessageBuilder
                 .withPayload(order)
-                .setHeader("name", "order").build());
+                .setHeader("name", "test1").build());
         if (send) {
             log.info("send order:{}", order);
         }

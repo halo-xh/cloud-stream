@@ -11,7 +11,7 @@ import org.springframework.messaging.SubscribableChannel;
  */
 public interface OrderStreamsIN {
 
-    String INPUT = "order-topic";
+    String INPUT = "order-topic1";
 
     @Input(INPUT)
     SubscribableChannel input();

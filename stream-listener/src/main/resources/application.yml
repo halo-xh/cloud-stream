@@ -7,7 +7,11 @@ spring:
       kafka:
         binder:
           brokers: 127.0.0.1:9092
-          zk-nodes: 127.0.0.1:2181
+          zk-nodes: 127.0.0.1:2182
       bindings:
-        input-channel:
-          destination: order-topic
+        input:
+          destination: order-topic1
+          group: g2
+  kafka:
+    topic-name:
+      mytpc: order-topic
