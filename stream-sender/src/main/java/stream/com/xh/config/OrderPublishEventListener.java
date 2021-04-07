@@ -5,7 +5,11 @@ import com.xh.pojo.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.PayloadApplicationEvent;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.event.ApplicationEventMulticaster;
 import org.springframework.context.event.EventListener;
+import org.springframework.context.event.SimpleApplicationEventMulticaster;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +29,13 @@ public class OrderPublishEventListener {
     @Autowired
     private OrderStreamsOUT out;
 
+
+    /**
+     * stream.com.xh.config.OrderPublishEventListener#publishUserChangeEvent(org.springframework.context.PayloadApplicationEvent)
+     * stream.com.xh.service.OrderSenderService#publishEvent(com.xh.pojo.Order)
+     *
+     * 发布事件 和事件监听实则  默认是同一线程。
+     */
     @EventListener
     public void publishUserChangeEvent(PayloadApplicationEvent<Order> eventRequest) {
         log.info("Kafka stream send user change event, request:{}", eventRequest.getPayload());
@@ -33,5 +44,17 @@ public class OrderPublishEventListener {
         System.out.println("publishUserChangeEvent  Thread.currentThread().getId() = " + Thread.currentThread().getId());
         boolean result = out.output().send(new GenericMessage<>(eventRequest.getPayload(), headers));
         log.info("Kafka stream send user change event result:{}", result);
+    }
+
+    /**
+     * 配置，发布和监听多线程异步操作，
+     */
+    @Bean(name = "applicationEventMulticaster")
+    public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
+        SimpleApplicationEventMulticaster eventMulticaster
+                = new SimpleApplicationEventMulticaster();
+
+        eventMulticaster.setTaskExecutor(new SimpleAsyncTaskExecutor());
+        return eventMulticaster;
     }
 }
