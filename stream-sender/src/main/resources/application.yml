@@ -10,4 +10,4 @@ spring:
           zk-nodes: 127.0.0.1:2181
       bindings:
         output-channel:
-          destination: order-topicccc
+          destination: order-topicp,order-topic
