@@ -34,7 +34,7 @@ public class OrderRest {
                 .price(BigDecimal.valueOf(123123))
                 .uuid(id)
                 .build();
-        orderSenderService.sendOrder(order);
+        //orderSenderService.sendOrder(order);
         orderSenderService.publishEvent(order1);
         return order.toString();
     }

@@ -21,7 +21,7 @@ import java.util.Map;
  * @date 2021/4/7 17:35
  * @description
  */
-@Component
+//@Component
 public class BatchListener {
 
     private static final Logger log = LoggerFactory.getLogger(BatchListener.class);

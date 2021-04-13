@@ -19,18 +19,18 @@ import java.util.List;
 @Slf4j
 public class MyComsumer {
 
-    @KafkaListener(topics = "${spring.kafka.topic-name.mytpc}",groupId = "g1")
+    @KafkaListener(topics = "sync_merchant_data_to_cloud",groupId = "g1")
     public void handleNamedOrderMsg(String record) {
         log.info("**^** KafkaListener - handleNamedOrderMsg get order: {}", record);
     }
 
-    @KafkaListener(id = "batch",clientIdPrefix = "batch",topics = {"topic.quick.batch"},containerFactory = "batchContainerFactory")
-    public void batchListener(List<String> data) {
-        log.info("topic.quick.batch  receive : ");
-        for (String s : data) {
-            log.info(  s);
-        }
-    }
+//    @KafkaListener(id = "batch",clientIdPrefix = "batch",topics = {"topic.quick.batch"},containerFactory = "batchContainerFactory")
+//    public void batchListener(List<String> data) {
+//        log.info("topic.quick.batch  receive : ");
+//        for (String s : data) {
+//            log.info(  s);
+//        }
+//    }
 
 
     /**
@@ -38,17 +38,17 @@ public class MyComsumer {
      * partitionOffsets --可以设置从某个偏移量开始监听
      * @PartitionOffset：partition --分区Id，非数组，initialOffset --初始偏移量
      */
-    @KafkaListener(id = "batchWithPartition",clientIdPrefix = "bwp",containerFactory = "batchContainerFactory",
-            topicPartitions = {
-                    @TopicPartition(topic = "topic.quick.batch.partition",partitions = {"1","3"}),
-                    @TopicPartition(topic = "topic.quick.batch.partition",partitions = {"0","4"},
-                            partitionOffsets = @PartitionOffset(partition = "2",initialOffset = "100"))
-            }
-    )
-    public void batchListenerWithPartition(List<String> data) {
-        log.info("topic.quick.batch.partition  receive : ");
-        for (String s : data) {
-            log.info(s);
-        }
-    }
+//    @KafkaListener(id = "batchWithPartition",clientIdPrefix = "bwp",containerFactory = "batchContainerFactory",
+//            topicPartitions = {
+//                    @TopicPartition(topic = "topic.quick.batch.partition",partitions = {"1","3"}),
+//                    @TopicPartition(topic = "topic.quick.batch.partition",partitions = {"0","4"},
+//                            partitionOffsets = @PartitionOffset(partition = "2",initialOffset = "100"))
+//            }
+//    )
+//    public void batchListenerWithPartition(List<String> data) {
+//        log.info("topic.quick.batch.partition  receive : ");
+//        for (String s : data) {
+//            log.info(s);
+//        }
+//    }
 }

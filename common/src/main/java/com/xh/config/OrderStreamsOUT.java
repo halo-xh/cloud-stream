@@ -11,7 +11,7 @@ import org.springframework.messaging.MessageChannel;
  */
 public interface OrderStreamsOUT {
 
-    String OUTPUT = "order-topic";
+    String OUTPUT = "order-topicp";
 
     @Output(OUTPUT)
     MessageChannel output();
