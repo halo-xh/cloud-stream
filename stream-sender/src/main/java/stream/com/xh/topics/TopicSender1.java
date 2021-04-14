@@ -5,6 +5,7 @@ import com.xh.pojo.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.stereotype.Component;
 
 /**
  * @author xiaohong
@@ -13,6 +14,7 @@ import org.springframework.messaging.support.MessageBuilder;
  * @description
  */
 @Slf4j
+@Component
 public class TopicSender1 {
 
     @Autowired
@@ -27,12 +29,5 @@ public class TopicSender1 {
         }
     }
 
-    public void sendOrder2(Order order) {
-        boolean send = myChannels.channelout2().send(MessageBuilder
-                .withPayload(order)
-                .setHeader("name", "test1").build());
-        if (send) {
-            log.info("send order:{}", order);
-        }
-    }
+
 }

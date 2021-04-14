@@ -13,6 +13,10 @@ spring:
         input:
           destination: order-topic1
           group: g2
+        channel1:
+          destination: topic1
+        channel2:
+          destination: topic2
   kafka:
     topic-name:
       mytpc: order-topic
