@@ -11,3 +11,7 @@ spring:
       bindings:
         output-channel:
           destination: order-topicp,order-topic
+        channel1:
+          destination: topic1
+        channel2:
+          destination: topic2
