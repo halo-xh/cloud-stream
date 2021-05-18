@@ -19,6 +19,7 @@
 		<module>stream-listener</module>
 		<module>stream-sender</module>
 		<module>common</module>
+		<module>topic2channel</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>

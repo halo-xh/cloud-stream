@@ -1,0 +1,23 @@
+
+server:
+  port: 8089
+
+spring:
+  cloud:
+    streams:
+      kafka:
+        binders:
+          binder:
+            brokers: 172.22.4.96:9092
+            zk-nodes: 172.22.4.96:2181
+#            auto-add-partitions: true
+#            auto-create-topics: false
+#            min-partition-count: 1
+      bindings:
+        channel-in: # channel ? 为啥 检查kafkamanger 发现他是topic/
+          binder: kafka # 指定binder ，
+          destination: dest_topicname # topic name???????
+          group: group1 # kafka 对应 分组
+        channel-out:
+          binder: kafka
+          destination: dest_topicname
