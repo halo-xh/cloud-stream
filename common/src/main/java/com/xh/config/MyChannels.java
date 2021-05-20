@@ -2,6 +2,7 @@ package com.xh.config;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 /**
@@ -21,12 +22,12 @@ public interface MyChannels {
     @Input(CHANNELIN2)
     SubscribableChannel channelin2();
 
-    String CHANNELOUT1 = "channelout1";
-    String CHANNELOUT2 = "channelout2";
+    String CHANNELOUT1 = "channelin1";
+    String CHANNELOUT2 = "channelin2";
 
     @Output(CHANNELOUT1)
-    SubscribableChannel channelout1();
+    MessageChannel channelout1();
 
     @Output(CHANNELOUT2)
-    SubscribableChannel channelout2();
+    MessageChannel channelout2();
 }

@@ -18,21 +18,21 @@ import com.xh.pojo.Order;
 @Slf4j
 public class OrderListener {
 
-    @StreamListener(OrderStreamsIN.INPUT)
+    @StreamListener(Sink.INPUT)
     public void handleOrderMsg(@Payload Order order) {
         log.info("handleOrderMsg get order: {}", order.toString());
     }
 
-    @StreamListener(OrderStreamsIN.INPUT)
-    public void handleOrderMsg2(GenericMessage<Order> orderGenericMessage) {
-        Order order = orderGenericMessage.getPayload();
-        log.info("get order: {}", order.toString());
-    }
+//    @StreamListener(OrderStreamsIN.INPUT)
+//    public void handleOrderMsg2(GenericMessage<Order> orderGenericMessage) {
+//        Order order = orderGenericMessage.getPayload();
+//        log.info("get order: {}", order.toString());
+//    }
 
-    @StreamListener(value = OrderStreamsIN.INPUT,condition = "headers['name'] == 'test1'")
-    public void handleNamedOrderMsg(@Payload Order order) {
-        log.info("handleNamedOrderMsg get order: {}", order.toString());
-    }
+//    @StreamListener(value = Sink.INPUT,condition = "headers['name'] == 'test1'")
+//    public void handleNamedOrderMsg(@Payload Order order) {
+//        log.info("handleNamedOrderMsg get order: {}", order.toString());
+//    }
 
     //@StreamListener(value = Sink.INPUT)
     public void handleInputOrderMsg(@Payload Order order) {

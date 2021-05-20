@@ -18,15 +18,15 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class TopicListeners {
 
-    @StreamListener(MyChannels.CHANNELIN1)
-    public void handleOrderMsg1(GenericMessage<Order> orderGenericMessage) {
-        Order order = orderGenericMessage.getPayload();
-        log.info("get order: order{}", order.toString());
-    }
-
-    @StreamListener(MyChannels.CHANNELIN2)
-    public void handleOrderMsg2(GenericMessage<Order> orderGenericMessage) {
-        Order order = orderGenericMessage.getPayload();
-        log.info("get order: {}", order.toString());
-    }
+//    @StreamListener(MyChannels.CHANNELIN1)
+//    public void handleOrderMsg1(GenericMessage<Order> orderGenericMessage) {
+//        Order order = orderGenericMessage.getPayload();
+//        log.info("get order: order{}", order.toString());
+//    }
+//
+//    @StreamListener(MyChannels.CHANNELIN2)
+//    public void handleOrderMsg2(GenericMessage<Order> orderGenericMessage) {
+//        Order order = orderGenericMessage.getPayload();
+//        log.info("get order: {}", order.toString());
+//    }
 }

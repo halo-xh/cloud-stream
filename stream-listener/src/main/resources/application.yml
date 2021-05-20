@@ -3,7 +3,7 @@ server:
 
 spring:
   cloud:
-    streams:
+    stream:
       kafka:
         binder:
           brokers: 127.0.0.1:9092
@@ -11,12 +11,8 @@ spring:
           zk-nodes: 127.0.0.1:2182
       bindings:
         input:
-          destination: order-topic1
+          destination: channelin1,order-topic,channelin2
           group: g2
-        channel1:
-          destination: topic1
-        channel2:
-          destination: topic2
   kafka:
     topic-name:
       mytpc: order-topic

@@ -5,8 +5,8 @@ import org.springframework.messaging.SubscribableChannel;
 
 public interface ChannelInConfig {
 
-    String INPUT = "channel-in";
+    String INPUT = "input-channel";
 
-    @Input(INPUT)
+    @Input(ChannelInConfig.INPUT)
     SubscribableChannel input();
 }

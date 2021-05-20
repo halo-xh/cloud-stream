@@ -3,15 +3,15 @@ server:
 
 spring:
   cloud:
-    streams:
+    stream:
       kafka:
         binder:
-          brokers: 127.0.0.1:9092
-          zk-nodes: 127.0.0.1:2181
+          brokers: kafka.dev.internal.seeyon.site:9092
+          zk-nodes: kafka.dev.internal.seeyon.site:2181
       bindings:
-        output-channel:
-          destination: order-topicp,order-topic
-        channel1:
-          destination: topic1
-        channel2:
-          destination: topic2
+        output:
+          destination: channelin1
+        channelin1:
+          destination: order-topic
+        channelin2:
+          destination: channelin2

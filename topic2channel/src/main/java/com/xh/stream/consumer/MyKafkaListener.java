@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * description
  */
 @Slf4j
-@Component
+//@Component
 public class MyKafkaListener {
 
     @KafkaListener(topics = "channel-out",groupId = "group2")

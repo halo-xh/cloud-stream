@@ -10,7 +10,7 @@ public class BytesUtils {
     public static byte[] longToByte(long res) {
         byte[] buffer = new byte[8];
         for (int i = 0; i < 8; i++) {
-            int offset = 64 - (i + 1) * 8;
+            int offset = 64 - ((i + 1) << 3);
             buffer[i] = (byte) ((res >> offset) & 0xff);
         }
         return buffer;

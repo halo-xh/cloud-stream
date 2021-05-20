@@ -4,20 +4,25 @@ server:
 
 spring:
   cloud:
-    streams:
+    stream:
       kafka:
-        binders:
-          binder:
-            brokers: 172.22.4.96:9092
-            zk-nodes: 172.22.4.96:2181
+        binder:
+          zk-nodes: localhost:8182
+          brokers: localhost:9092
+
 #            auto-add-partitions: true
 #            auto-create-topics: false
 #            min-partition-count: 1
+        bindings:
+          input-channel:
+            consumer:
+              ## 所有服务都可发送 dlq
+              enableDlq: true
+              dlqName: ErrorTopic
       bindings:
-        channel-in: # channel ?  topic indeed
-          binder: kafka #
-          destination: dest_topicname # topic name ?
-          group: group1 # kafka group ?
-        channel-out:
-          binder: kafka
+        input-channel: # channel
+          destination: dest_topicname # topic name
+          group: grp1 # kafka group
+        channel_out:
           destination: dest_topicname
+          group: grp1

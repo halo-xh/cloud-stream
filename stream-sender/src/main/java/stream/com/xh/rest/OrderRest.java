@@ -44,7 +44,7 @@ public class OrderRest {
 
         topicSender1.sendOrder(order);
         topicSender2.sendOrder(order);
-        orderSenderService.sendOrder(order);
+//        orderSenderService.sendOrder(order);
         orderSenderService.publishEvent(order1);
 
         return order.toString();

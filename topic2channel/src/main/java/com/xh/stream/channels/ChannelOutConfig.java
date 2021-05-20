@@ -6,8 +6,8 @@ import org.springframework.messaging.MessageChannel;
 
 public interface ChannelOutConfig {
 
-    String OUTPUT = "channel-out";
+    String OUTPUT = "channel_out";
 
-    @Output(OUTPUT)
+    @Output(ChannelOutConfig.OUTPUT)
     MessageChannel output();
 }

@@ -10,6 +10,8 @@ import org.springframework.context.event.ApplicationEventMulticaster;
 import org.springframework.context.event.EventListener;
 import org.springframework.context.event.SimpleApplicationEventMulticaster;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.SubscribableChannel;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +29,7 @@ import java.util.Map;
 public class OrderPublishEventListener {
 
     @Autowired
-    private OrderStreamsOUT out;
+    private MessageChannel out;
 
 
     /**
@@ -42,7 +44,7 @@ public class OrderPublishEventListener {
         Map<String, Object> headers = new HashMap<>();
         headers.put("order-event", eventRequest.getPayload().getName());
         System.out.println("publishUserChangeEvent  Thread.currentThread().getId() = " + Thread.currentThread().getId());
-        boolean result = out.output().send(new GenericMessage<>(eventRequest.getPayload(), headers));
+        boolean result = out.send(new GenericMessage<>(eventRequest.getPayload(), headers));
         log.info("Kafka stream send user change event result:{}", result);
     }
 
