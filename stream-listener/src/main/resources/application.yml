@@ -9,6 +9,13 @@ spring:
           brokers: 127.0.0.1:9092
 #          brokers: kafka.dev.internal.seeyon.site:9092
           zk-nodes: 127.0.0.1:2182
+        # 死信
+        bindings:
+          input:
+            consumer:
+              ## 所有服务都可发送 dlq
+              enableDlq: true
+              dlqName: ErrorTopic
       bindings:
         input:
           destination: channelin1,order-topic,channelin2
