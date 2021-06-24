@@ -29,21 +29,27 @@ public class OrderRest {
     @Autowired
     private TopicSender1 topicSender2;
 
-    @RequestMapping("/{id}")
+    @RequestMapping("/res/{id}")
     public String sendOrder(@PathVariable String id){
         Order order = Order.builder().date(new Date())
                 .name("id-" + id)
-                .price(BigDecimal.valueOf(123))
+                .price(BigDecimal.valueOf(0))
                 .uuid(id)
                 .build();
         Order order1 = Order.builder().date(new Date())
                 .name("id-" + id)
-                .price(BigDecimal.valueOf(123123))
+                .price(BigDecimal.valueOf(1111111111))
+                .uuid(id)
+                .build();
+
+        Order order2 = Order.builder().date(new Date())
+                .name("id-" + id)
+                .price(BigDecimal.valueOf(222222222))
                 .uuid(id)
                 .build();
 
         topicSender1.sendOrder(order);
-        topicSender2.sendOrder(order);
+        topicSender2.sendOrder(order2);
 //        orderSenderService.sendOrder(order);
         orderSenderService.publishEvent(order1);
 

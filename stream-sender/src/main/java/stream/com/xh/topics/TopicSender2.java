@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
+import stream.com.xh.config.MessageChannels;
 
 /**
  * @author xiaohong
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class TopicSender2 {
 
     @Autowired
-    private MyChannels myChannels;
+    private MessageChannels myChannels;
 
 
     public void sendOrder2(Order order) {

@@ -22,12 +22,16 @@ public interface MyChannels {
     @Input(CHANNELIN2)
     SubscribableChannel channelin2();
 
-    String CHANNELOUT1 = "channelin1";
-    String CHANNELOUT2 = "channelin2";
+    String CHANNELOUT1 = "output";
+    String CHANNELOUT2 = "channelout1";
+    String CHANNELOUT3 = "channelin2";
 
     @Output(CHANNELOUT1)
     MessageChannel channelout1();
 
     @Output(CHANNELOUT2)
     MessageChannel channelout2();
+
+    @Output(CHANNELOUT3)
+    MessageChannel channelout3();
 }

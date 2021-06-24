@@ -7,8 +7,8 @@ spring:
     stream:
       kafka:
         binder:
-          zk-nodes: localhost:8182
-          brokers: localhost:9092
+          zk-nodes: 172.26.251.30:8182
+          brokers: 172.26.251.30:9092
 
 #            auto-add-partitions: true
 #            auto-create-topics: false

@@ -6,12 +6,22 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: kafka.dev.internal.seeyon.site:9092
-          zk-nodes: kafka.dev.internal.seeyon.site:2181
+          brokers: 172.26.205.232:9092
+          zk-nodes: 172.26.205.232:2181
       bindings:
         output:
           destination: channelin1
-        channelin1:
+        channel-out1:
           destination: order-topic
-        channelin2:
+        channel-out2:
           destination: channelin2
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    hikari:
+      auto-commit: true
+  jpa:
+    hibernate:
+      ddl-auto: create

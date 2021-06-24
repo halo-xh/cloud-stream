@@ -24,7 +24,7 @@ import java.util.Map;
  * @date 2021/1/14 16:27
  * @description
  */
-@Component
+//@Component
 @Slf4j
 public class OrderPublishEventListener {
 

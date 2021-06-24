@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import com.xh.pojo.Order;
+import stream.com.xh.config.MessageChannels;
 
 /**
  * @author xiaohong
@@ -23,10 +24,10 @@ public class OrderSenderService {
     private ApplicationEventPublisher applicationEventPublisher;
 
     @Autowired
-    private OrderStreamsOUT out;
+    private MessageChannels out;
 
     public void sendOrder(Order order) {
-        boolean send = out.output().send(MessageBuilder
+        boolean send = out.channelout3().send(MessageBuilder
                 .withPayload(order)
                 .setHeader("name", "test1").build());
         if (send) {
