@@ -6,9 +6,12 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: 172.26.205.232:9092
-          zk-nodes: 172.26.205.232:2181
+          brokers: 127.0.0.1:9092
+          zk-nodes: 127.0.0.1:2181
       bindings:
+        input:
+          destination: channelin2
+          group: g2
         output:
           destination: channelin1
         channel-out1:

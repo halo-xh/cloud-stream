@@ -15,11 +15,18 @@ spring:
             consumer:
               ## 所有服务都可发送 dlq
               enableDlq: true
-              dlqName: ErrorTopic
+              dlqName: ErrorTopic-listener
       bindings:
         input:
-          destination: channelin1,order-topic,channelin2
+          destination: channelin2
           group: g2
-  kafka:
-    topic-name:
-      mytpc: order-topic
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    hikari:
+      auto-commit: true
+  jpa:
+    hibernate:
+      ddl-auto: create

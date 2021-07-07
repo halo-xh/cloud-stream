@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -14,12 +16,13 @@ import java.util.Date;
  * @date 2021/1/5 9:35
  * @description
  */
+@Entity(name = "orderr")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class Order {
-
+    @Id
     private String uuid;
 
     private BigDecimal price;
