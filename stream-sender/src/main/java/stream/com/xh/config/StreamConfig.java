@@ -1,6 +1,7 @@
 package stream.com.xh.config;
 
 import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.messaging.Processor;
 
 /**
  * @author xiaohong
@@ -8,6 +9,6 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
  * @date 2021/1/5 9:38
  * @description
  */
-@EnableBinding({MessageChannels.class})
+@EnableBinding({MessageChannels.class, Processor.class})
 public class StreamConfig {
 }

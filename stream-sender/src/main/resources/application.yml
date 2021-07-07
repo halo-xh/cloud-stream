@@ -8,16 +8,24 @@ spring:
         binder:
           brokers: 127.0.0.1:9092
           zk-nodes: 127.0.0.1:2181
+          required-acks: -1
+          auto-add-partitions: true
+          auto-create-topics: true # 依赖broker的 auto.create.topics.enable
+          transaction:
+            transaction-id-prefix: tx-
       bindings:
         input:
           destination: channelin2
           group: g2
+          consumer:
+            enableDlq: true
+            dlqName: ErrorTopic-listener
+            autoCommitOffset: true
+
         output:
           destination: channelin1
-        channel-out1:
+        channel-out:
           destination: order-topic
-        channel-out2:
-          destination: channelin2
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Shanghai
