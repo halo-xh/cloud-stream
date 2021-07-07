@@ -14,14 +14,14 @@ spring:
           transaction:
             transaction-id-prefix: tx-
       bindings:
-        input:
+        input:DlqDestinationResolver
           destination: channelin2
           group: g2
           consumer:
             enableDlq: true
             dlqName: ErrorTopic-listener
             autoCommitOffset: true
-
+            concurrency: 7
         output:
           destination: channelin1
         channel-out:
