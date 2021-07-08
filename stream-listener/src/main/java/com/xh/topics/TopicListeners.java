@@ -1,7 +1,5 @@
 package com.xh.topics;
 
-import com.xh.config.MyChannels;
-import com.xh.config.OrderStreamsIN;
 import com.xh.pojo.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.StreamListener;

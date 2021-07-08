@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import stream.com.xh.entiy.TestEntity;
+import stream.com.xh.event.BIZ;
 import stream.com.xh.event.TestEvent;
 
 import javax.transaction.Transactional;
@@ -28,7 +29,8 @@ public class EntityService implements EntityServicer {
     public TestEntity save(TestEntity testEntity) {
         TestEvent testEvent = new TestEvent();
         testEvent.setEntity(testEntity);
-        testEvent.setBiz("biz1-a");
+//        testEvent.setBiz("biz1-a");
+        testEvent.setBiz(BIZ.A);
         TestEntity save = testDao.save(testEntity);
         publisher.publishEvent(testEvent);
         System.out.println("save Thread.currentThread().getName() = " + Thread.currentThread().getName() + "event = " + testEvent);

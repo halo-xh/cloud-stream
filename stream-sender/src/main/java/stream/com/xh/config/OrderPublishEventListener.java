@@ -1,9 +1,9 @@
 package stream.com.xh.config;
 
-import com.xh.config.OrderStreamsOUT;
 import com.xh.pojo.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.PayloadApplicationEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ApplicationEventMulticaster;
@@ -29,7 +29,7 @@ import java.util.Map;
 public class OrderPublishEventListener {
 
     @Autowired
-    private MessageChannel out;
+    private Source out;
 
 
     /**
@@ -44,7 +44,7 @@ public class OrderPublishEventListener {
         Map<String, Object> headers = new HashMap<>();
         headers.put("order-event", eventRequest.getPayload().getName());
         System.out.println("publishUserChangeEvent  Thread.currentThread().getId() = " + Thread.currentThread().getId());
-        boolean result = out.send(new GenericMessage<>(eventRequest.getPayload(), headers));
+        boolean result = out.output().send(new GenericMessage<>(eventRequest.getPayload(), headers));
         log.info("Kafka stream send user change event result:{}", result);
     }
 

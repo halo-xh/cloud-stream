@@ -18,11 +18,13 @@ spring:
               dlqName: ErrorTopic-listener
       bindings:
         input:
-          destination: channelin2
-          group: g2
+          destination: concurrency-test
+          group: 7
+          consumer:
+            concurrency: 5 # 消费线程数，和分区数有关, 小于等于分区数，大于时则取分区数
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/tester?useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     hikari:
@@ -30,3 +32,14 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+  kafka:
+    properties:
+      max:
+        poll:
+          records: 50
+          interval:
+            ms: 3000
+      group:
+        instance:
+          id: 123

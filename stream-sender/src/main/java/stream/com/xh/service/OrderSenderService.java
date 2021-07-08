@@ -1,7 +1,5 @@
 package stream.com.xh.service;
 
-import com.xh.config.OrderStreamsIN;
-import com.xh.config.OrderStreamsOUT;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -27,7 +25,7 @@ public class OrderSenderService {
     private MessageChannels out;
 
     public void sendOrder(Order order) {
-        boolean send = out.channelout3().send(MessageBuilder
+        boolean send = out.channelout().send(MessageBuilder
                 .withPayload(order)
                 .setHeader("name", "test1").build());
         if (send) {

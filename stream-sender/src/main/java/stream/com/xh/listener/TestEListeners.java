@@ -23,12 +23,12 @@ public class TestEListeners {
         System.out.println("listen1 Thread.currentThread().getName() = " + Thread.currentThread().getName() + " event = " + event);
     }
 
-    @TransactionalEventListener(condition = "#event.biz == 'biz1-a'")
+    @TransactionalEventListener(condition = "#event.biz == BIZ.A")// failed
     public void listen2(TestEvent event) {
         System.out.println("listen2 Thread.currentThread().getName() = " + Thread.currentThread().getName() + " event = " + event);
     }
 
-    @TransactionalEventListener(condition = "#event.biz == 'biz2'")
+    @TransactionalEventListener(condition = "#event.biz.name() == 'A'")
     public void listen3(TestEvent event) {
         System.out.println("listen3 Thread.currentThread().getName() = " + Thread.currentThread().getName() + " event = " + event);
     }

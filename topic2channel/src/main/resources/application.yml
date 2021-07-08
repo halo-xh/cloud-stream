@@ -7,12 +7,11 @@ spring:
     stream:
       kafka:
         binder:
-          zk-nodes: 172.26.251.30:8182
-          brokers: 172.26.251.30:9092
-
-#            auto-add-partitions: true
-#            auto-create-topics: false
-#            min-partition-count: 1
+          zk-nodes: 127.0.0.1:9092 # kafka.dev.internal.seeyon.site:9092
+          brokers: 127.0.0.1:9092 # kafka.dev.internal.seeyon.site:9092
+          #auto-add-partitions: true
+          #auto-create-topics: true
+          #min-partition-count: 1
         bindings:
           input-channel:
             consumer:
@@ -21,8 +20,7 @@ spring:
               dlqName: ErrorTopic
       bindings:
         input-channel: # channel
-          destination: dest_topicname # topic name
+          destination: dest_topic # topic name
           group: grp1 # kafka group
         channel_out:
-          destination: dest_topicname
-          group: grp1
+          destination: dest_topic

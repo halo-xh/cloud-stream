@@ -1,8 +1,7 @@
 import com.xh.pojo.Order;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import stream.StreamApplication;
+import stream.StreamSenderApplication;
 import stream.com.xh.service.OrderSenderService;
 
 import javax.annotation.Resource;
@@ -14,7 +13,7 @@ import java.util.Date;
  * date  2021/6/30 22:43
  * description
  */
-@SpringBootTest(classes = StreamApplication.class)
+@SpringBootTest(classes = StreamSenderApplication.class)
 public class MsgSender {
 
     @Resource

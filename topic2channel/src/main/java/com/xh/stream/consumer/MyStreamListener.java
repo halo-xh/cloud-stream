@@ -3,6 +3,7 @@ package com.xh.stream.consumer;
 import com.xh.pojo.Order;
 import com.xh.stream.channels.ChannelInConfig;
 import lombok.extern.slf4j.Slf4j;
+//import com.xh.stream.channels.ChannelInConfig;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;

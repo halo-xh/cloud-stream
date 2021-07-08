@@ -11,7 +11,7 @@ import stream.com.xh.entiy.TestEntity;
 @Data
 public class TestEvent {
 
-    private String biz;
+    private BIZ biz;
 
     private TestEntity entity;
 

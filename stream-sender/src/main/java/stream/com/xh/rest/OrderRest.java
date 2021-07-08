@@ -1,12 +1,9 @@
 package stream.com.xh.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.xh.pojo.Order;
 import stream.com.xh.service.OrderSenderService;
-import stream.com.xh.topics.TopicSender1;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -23,37 +20,14 @@ public class OrderRest {
     @Autowired
     OrderSenderService orderSenderService;
 
-    @Autowired
-    private TopicSender1 topicSender1;
-
-    @Autowired
-    private TopicSender1 topicSender2;
 
     @RequestMapping("/res/{id}")
-    public String sendOrder(@PathVariable String id){
-        Order order = Order.builder().date(new Date())
-                .name("id-" + id)
-                .price(BigDecimal.valueOf(0))
-                .uuid(id)
-                .build();
-        Order order1 = Order.builder().date(new Date())
-                .name("id-" + id)
-                .price(BigDecimal.valueOf(1111111111))
-                .uuid(id)
-                .build();
-
-        Order order2 = Order.builder().date(new Date())
-                .name("id-" + id)
-                .price(BigDecimal.valueOf(222222222))
-                .uuid(id)
-                .build();
-
-        topicSender1.sendOrder(order);
-        topicSender2.sendOrder(order2);
-//        orderSenderService.sendOrder(order);
-        orderSenderService.publishEvent(order1);
-
-        return order.toString();
+    public String sendOrder(@PathVariable String id) {
+        for (int i = 0; i < 100; i++) {
+            Order order = Order.builder().uuid(String.valueOf(i)).date(new Date()).name(String.valueOf(i)).price(BigDecimal.ONE).build();
+            orderSenderService.sendOrder(order);
+        }
+        return id;
     }
 
 

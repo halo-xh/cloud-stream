@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * description
  */
 @Component
-public class Sender {
+public class MySender {
 
     @Autowired
     private ChannelOutConfig channel;

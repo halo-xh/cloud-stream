@@ -1,7 +1,7 @@
 package com.xh.stream.rest;
 
 import com.xh.pojo.Order;
-import com.xh.stream.sender.Sender;
+import com.xh.stream.sender.MySender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ import java.util.Date;
 public class OrderRest {
 
     @Autowired
-    private Sender sender;
+    private MySender sender;
 
     @RequestMapping("/order/{id}")
     public String sendOrder(@PathVariable String id){
