@@ -7,8 +7,8 @@ spring:
     stream:
       kafka:
         binder:
-          zk-nodes: 127.0.0.1:9092 # kafka.dev.internal.seeyon.site:9092
-          brokers: 127.0.0.1:9092 # kafka.dev.internal.seeyon.site:9092
+          zk-nodes: 127.0.0.1:9092
+          brokers: 127.0.0.1:9092
           #auto-add-partitions: true
           #auto-create-topics: true
           #min-partition-count: 1

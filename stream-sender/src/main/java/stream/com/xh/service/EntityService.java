@@ -20,7 +20,7 @@ public class EntityService implements EntityServicer {
 
 
     @Autowired
-    private TestDao testDao;
+    private TestEntityDao testDao;
 
     @Autowired
     private ApplicationEventPublisher publisher;

@@ -1,9 +1,10 @@
-package stream.com.xh.service;
+package stream.com.xh.service.tester;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 import stream.com.xh.entiy.TestEntity;
+import stream.com.xh.entiy.Tester;
 
 /**
  * author  Xiao Hong
@@ -11,6 +12,6 @@ import stream.com.xh.entiy.TestEntity;
  * description
  */
 @Repository
-public interface TestDao extends JpaRepository<TestEntity, Long>, JpaSpecificationExecutor<TestEntity> {
+public interface TesterDao extends JpaRepository<Tester, Long>, JpaSpecificationExecutor<Tester> {
 
 }

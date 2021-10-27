@@ -30,9 +30,9 @@ spring:
             partition-count: 10 # 设置分区数，配合auto-add-partitions，会自动创建
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/tester?useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:23306/demo?useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: 123456
+    password: root
     hikari:
       auto-commit: true
   jpa:
