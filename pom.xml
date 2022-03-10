@@ -25,6 +25,7 @@
 		<lombok-version>1.18.12</lombok-version>
 		<spring.version>2.3.7.RELEASE</spring.version>
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+		<mysql.version>8.0.27</mysql.version>
 	</properties>
 
 	<dependencyManagement>
@@ -53,6 +54,13 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
